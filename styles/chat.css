@@ -29,7 +29,7 @@
 
 .chat__page{
   height: calc(100vh - 10.5em);
-  @apply container mx-auto p-4 pb-6;
+  @apply container mx-auto p-4;
 }
 
 .chat__page > .background{
