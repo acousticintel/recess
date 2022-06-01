@@ -13,9 +13,9 @@ export default function Calendar() {
           {days.map((d, i) => (
             <div key={i} className={`indicator ${i == 3 && "selected"}`}>
               {(i == 3 || i == 1) && (
-                <span class="indicator-item indicator-bottom indicator-center badge badge-primary"></span>
+                <span className="indicator-item indicator-bottom indicator-center badge badge-primary"></span>
               )}
-              <div class="grid place-items-center py-2">
+              <div className="grid place-items-center py-2">
                 <span>{d}</span>
                 <h5>21</h5>
               </div>
