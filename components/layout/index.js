@@ -1,12 +1,12 @@
 import Head from "next/head";
 import dynamic from "next/dynamic";
 import { motion, AnimatePresence } from "framer-motion";
-import ContactsModal from "../modals/contactsModal";
-import WorkModal from "../modals/workModal";
 //custom
 const Navbar = dynamic(() => import("./navbar"));
 const Banner = dynamic(() => import("./banner"));
 const BottomNav = dynamic(() => import("./bottomNav"));
+const ContactsModal = dynamic(() => import("../modals/contactsModal"));
+const WorkModal = dynamic(() => import("../modals/workModal"));
 
 const variants = {
   hide: { opacity: 1 },
