@@ -1,0 +1,33 @@
+.profile__page{
+  @apply container mx-auto px-8;
+}
+
+.profile__page > .user{
+  @apply flex flex-col items-center;
+}
+
+.profile__page > .user h1{
+  @apply font-bold text-lg mt-4 tracking-wide text-white;
+}
+
+.profile__page > .user h2{
+  @apply text-sm -mt-2 text-gray-100;
+}
+
+.profile__page > .button__sec{
+  @apply grid grid-cols-2 gap-4 mt-6;
+}
+
+.profile__page > .button__sec > div{
+  @apply bg-white shadow-lg p-4 rounded-3xl flex 
+  flex-col items-center;
+}
+
+.profile__page > .button__sec > div > div{
+  @apply rounded-full h-10 w-10 min-w-[2.5rem]   
+  flex justify-center items-center;
+}
+
+.profile__page > .button__sec > div > span{
+  @apply text-slate-400 font-medium uppercase;
+}

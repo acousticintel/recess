@@ -1,0 +1,64 @@
+.work__modal{
+  @apply h-full w-full text-slate-900;
+}
+
+.work__modal > .heading{
+  @apply flex justify-between items-center mt-6;
+}
+
+.work__modal > .heading h1{
+  @apply text-slate-500 font-light my-3;
+}
+
+.work__modal > .heading > .child{
+  @apply flex items-center my-3 ml-6;
+}
+
+.work__modal > .heading > .child h1{
+  @apply text-slate-500 max-w-fit overflow-hidden truncate mr-3 
+  text-sm font-medium;
+}
+
+.work__modal > h2{
+  @apply text-xl text-slate-800 font-semibold my-5;
+}
+
+.work__modal .details{
+  @apply flex flex-col items-center px-6;
+}
+
+.work__modal .item{
+  @apply flex justify-between w-full py-3 border-b border-dashed border-gray-300;
+}
+
+.work__modal .item:last-child{
+  @apply border-0;
+}
+
+.work__modal .item > div{
+  @apply flex items-center text-slate-400;
+}
+
+.work__modal .item > div > span{
+  @apply ml-4;
+}
+
+.work__modal .item > span{
+  @apply text-purple-500 ml-4;
+}
+
+.work__modal .button__sec{
+  @apply my-6 flex gap-3 flex-col md:flex-row;
+}
+
+.work__modal .button__sec button{
+  @apply !rounded-full btn;
+}
+
+.work__modal .button__sec button:nth-of-type(1){
+  @apply w-full md:w-1/3 btn-info gap-2 text-white;
+}
+
+.work__modal .button__sec button:nth-of-type(2){
+  @apply flex-1 bg-purple-500 border-purple-600 gap-2;
+}

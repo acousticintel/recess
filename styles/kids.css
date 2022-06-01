@@ -1,0 +1,53 @@
+.kids__sec{
+  @apply container mx-auto pt-4;
+}
+
+.kids__sec > .kids__list{
+  @apply flex justify-start gap-4 overflow-hidden py-4 px-6
+  snap-mandatory snap-x overflow-x-auto;
+}
+
+.kids__sec > .kids__list .child{
+  @apply rounded-3xl bg-white text-center snap-center
+  shadow-lg leading-tight min-w-[200px];
+}
+
+.kids__sec > .kids__list .child .kid{
+  @apply px-12 pt-4 pb-2;
+}
+
+.kids__sec > .kids__list .avatar div{
+  @apply w-16 rounded-full ring-2 ring-offset-base-100;
+}
+
+.kids__sec > .kids__list .kid.purple .avatar div{
+  @apply w-16 rounded-full ring ring-purple-400 ring-offset-base-100;
+}
+
+.kids__sec > .kids__list .kid.red .avatar div{
+  @apply w-16 rounded-full ring ring-red-400 ring-offset-base-100;
+}
+
+
+.kids__sec > .kids__list .child h1{
+  @apply font-bold text-sm mt-2;
+}
+
+.kids__sec > .kids__list .child h2{
+  @apply text-gray-400 text-xs;
+}
+
+
+.kids__sec > .kids__list .child .status{
+  @apply flex justify-center items-center border-t border-dotted
+  border-gray-200 py-3;
+}
+
+
+.kids__sec > .kids__list .child .status .indicator{
+  @apply bg-green-400 w-3 h-3 rounded-full -mb-0.5 mr-1;
+}
+
+.kids__sec > .kids__list .child .status span{
+  @apply text-gray-400 text-sm uppercase;
+}

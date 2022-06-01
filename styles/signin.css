@@ -1,0 +1,4 @@
+.signIn-page button{
+  @apply font-semibold shadow-md btn-md btn-primary 
+  mx-auto mt-6 overflow-hidden rounded-full;
+}

@@ -1,0 +1,81 @@
+.diaries {
+  @apply container mx-auto px-8;
+}
+
+.diaries .diary__entry {
+  @apply rounded-2xl overflow-hidden pt-10 pb-4 px-10 my-5;
+}
+
+.diaries .diary__entry.purple {
+  @apply bg-gradient-to-r from-indigo-300 to-purple-400 shadow-lg
+}
+
+.diaries .diary__entry.red {
+  @apply bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500
+}
+
+.diaries .diary__entry > .student {
+  @apply flex items-center mb-4;
+}
+
+.diaries .diary__entry > .student > .avatar{
+  @apply mr-3;
+}
+
+.diaries .diary__entry > .student > .avatar div{
+  @apply w-8 rounded-full ring ring-offset-base-100 ring-offset-2;
+}
+
+.diaries .diary__entry.purple > .student > .avatar div{
+  @apply ring-purple-400;
+}
+
+.diaries .diary__entry.red > .student > .avatar div{
+  @apply ring-red-400;
+}
+
+.diaries .diary__entry > .student > h1{
+  @apply text-white bg-gray-100 bg-opacity-30 p-1 max-w-fit rounded-md 
+  overflow-hidden;
+}
+
+.diaries .diary__entry > h2 {
+  @apply text-xl mb-1 font-semibold text-white z-10;
+}
+
+.diaries .diary__entry > h3 {
+  @apply text-sm mb-6 text-gray-200;
+}
+
+.diaries .diary__entry > label {
+  @apply btn btn-sm border-0 bg-white;
+}
+
+.diaries .diary__entry.purple > label {
+  @apply text-purple-500;
+}
+
+.diaries .diary__entry.red > label {
+  @apply text-red-500;
+}
+
+.diaries .diary__entry .item {
+  @apply flex items-center justify-center text-amber-700 mt-3;
+}
+
+.diaries .diary__entry .item > span:nth-of-type(1) {
+  @apply ml-1 text-sm;
+}
+
+.diaries .diary__entry .item > span:nth-of-type(2) {
+  @apply ml-3 text-amber-900;
+}
+
+.diaries .diary__entry > .complete {
+  @apply bg-neutral border-t border-amber-900 h-16 text-center 
+  flex items-center justify-center;
+}
+
+.diaries .diary__entry > .complete span {
+  @apply mr-2;
+}

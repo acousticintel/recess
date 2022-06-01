@@ -1,0 +1,84 @@
+.chats__page{
+  @apply container px-2;
+}
+
+.chats__page h1{
+  @apply text-3xl font-medium text-white;
+}
+
+.chats__page > .chats__sec .chats__list {
+  @apply px-6 mt-3;
+}
+
+.chats__page > .chats__sec .chats__list .chat{
+  @apply flex py-3 items-center rounded-3xl border-b border-dashed 
+  bg-neutral px-4 py-3 mb-1 bg-white;
+}
+
+.chats__page > .chats__sec .chats__list .chat .content{
+  @apply flex flex-col grow ml-4;
+}
+
+.chats__page > .chats__sec .chats__list .chat .content p{
+  @apply text-ellipsis;
+}
+
+.chats__page > .chats__sec .chats__list .chat > span{
+  @apply text-gray-400 text-sm;
+}
+
+.chat__page{
+  height: calc(100vh - 10.5em);
+  @apply container mx-auto p-4;
+}
+
+.chat__page > .background{
+  @apply w-full h-full rounded-3xl p-4 bg-white flex flex-col;
+}
+
+.chat__page > .background > .messages{
+  @apply flex grow flex-col justify-end mx-6 bg-white 
+  rounded-3xl p-4 overflow-y-auto;
+}
+
+.chat__page > .background > .messages .message.right{
+  @apply flex justify-end;
+}
+
+.chat__page > .background > .messages .message.right p{
+  @apply rounded-l-full rounded-tr-full bg-orange-100
+  py-2 px-5 max-w-fit;
+}
+
+.chat__page > .background > .messages .message.right.cluster p{
+  @apply rounded-tr-none;
+}
+
+.chat__page > .background > .messages .message.right.last p{
+  @apply rounded-tr-none rounded-br-full;
+}
+
+.chat__page > .background > .messages .message.left{
+  @apply flex justify-start;
+}
+
+.chat__page > .background > .messages .message.left p{
+  @apply rounded-r-full rounded-tl-full bg-primary 
+  text-primary-content py-2 px-5  max-w-fit;
+}
+
+.chat__page > .background > .messages .message.left.cluster p{
+  @apply rounded-tr-none;
+}
+
+.chat__page > .background > .messages .message.left.last p{
+  @apply rounded-tr-none rounded-br-full;
+}
+
+.chat__page > .background > .messages .message span{
+  @apply text-sm text-gray-400 mx-2;
+}
+
+.chat__page > .background > .messages .message.right span{
+  @apply float-right;
+}

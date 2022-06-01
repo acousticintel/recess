@@ -1,0 +1,31 @@
+.calendar__page{
+  @apply px-6;
+}
+
+.calendar__page .calendar{
+  @apply bg-white rounded-3xl p-4;
+}
+
+.calendar__page .calendar h4{
+  @apply font-bold;
+}
+
+.calendar__page .calendar .dates{
+  @apply flex justify-around;
+}
+
+.calendar__page .calendar .dates > div{
+  @apply flex flex-col items-center px-3 py-2 mt-3;
+}
+
+.calendar__page .calendar .dates > div.selected{
+  @apply bg-cyan-100 rounded-2xl;
+}
+
+.calendar__page .calendar span{
+  @apply font-medium text-gray-400;
+}
+
+.calendar__page .calendar h5{
+  @apply font-semibold;
+}

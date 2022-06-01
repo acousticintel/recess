@@ -1,0 +1,15 @@
+.index__page{
+  @apply pt-6 pb-28;
+}
+
+.welcome__tag{
+  @apply flex items-center justify-start px-8 text-white text-3xl;
+}
+
+.welcome__tag span{
+  @apply text-gray-100 text-lg;
+}
+
+.welcome__tag h4{
+  @apply text-white font-semibold text-2xl -mt-3;
+}
