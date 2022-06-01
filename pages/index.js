@@ -69,11 +69,6 @@ export default function Profile() {
     }
   }
 
-  const handleFaqClick = (e) => {
-    e.preventDefault();
-    router.push("/faq");
-  };
-
   return (
     <AuthGuard>
       <motion.div

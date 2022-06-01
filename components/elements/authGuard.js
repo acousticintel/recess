@@ -4,9 +4,7 @@ import { useEffect } from 'react'
 import Loader from '../layout/loader';
 
 export function AuthGuard({ children }) {
-  const { data: session, status } = useSession({
-    required: true, 
-  });
+  const { data: session, status } = useSession();
 
   useEffect(() => {
     const { pathname } = Router; 
