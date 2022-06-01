@@ -1,7 +1,6 @@
 import React from "react";
 import Diaries from "../components/diaries";
 import Title from "../components/elements/title";
-import Reminders from "../components/reminders";
 
 export default function Calendar() {
   const days = ["s", "m", "t", "w", "t", "f", "s"];
@@ -12,16 +11,19 @@ export default function Calendar() {
         <h4>22 May</h4>
         <div className="dates">
           {days.map((d, i) => (
-            <div key={i} className={`${i == 3 && "selected"}`}>
-              <span>s</span>
-              <h5>21</h5>
+            <div key={i} className={`indicator ${i == 3 && "selected"}`}>
+              {(i == 3 || i == 1) && (
+                <span class="indicator-item indicator-bottom indicator-center badge badge-primary"></span>
+              )}
+              <div class="grid place-items-center py-2">
+                <span>{d}</span>
+                <h5>21</h5>
+              </div>
             </div>
           ))}
         </div>
       </div>
-      <Title title="Reminders" />
-      <Reminders />
-      <Title title="Reminders" light/>
+      <Title title="Diaries" light />
       <Diaries />
     </div>
   );

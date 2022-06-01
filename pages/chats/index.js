@@ -1,4 +1,5 @@
 import dynamic from "next/dynamic";
+import { useEffect } from "react";
 //custom
 import ChatElement from "../../components/elements/chatElement";
 import { useData } from "../../context/dataContext";
@@ -9,6 +10,10 @@ const BiMessageAltAdd = dynamic(
 
 export default function Chat() {
   const { chats } = useData();
+
+  (() => {
+    console.log(chats);
+  }, [chats]);
 
   return (
     <div className="chats__page">

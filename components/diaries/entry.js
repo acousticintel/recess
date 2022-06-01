@@ -2,14 +2,18 @@ import { useEffect, useState } from "react";
 import { useData } from "../../context/dataContext";
 
 export default function Entry({ data }) {
-  const { getStudent } = useData();
+  const { getStudent, students } = useData();
   const [student, setStudent] = useState({});
 
   useEffect(() => {
-    getStudent(data.schoolId, data.classId).then((stu) => {
-      setStudent(stu);
-    });
-  }, [data, getStudent]);
+    if (students?.length > 0) {
+      students.map((s, i) => {
+        if (s.schoolId === data.schoolId && s.classId === data.classId ) {
+          setStudent(s);
+        }
+      });
+    }
+  }, [data, students]);
 
   return (
     <div className={`diary__entry ${student?.color ? student.color : "red"}`}>

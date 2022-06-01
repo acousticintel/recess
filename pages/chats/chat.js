@@ -31,7 +31,7 @@ export default function Chat() {
   };
 
   const handleClick = () => {
-    if (text.length > 0) {
+    if (text.length > 0 && id) {
       sendMessage(id, text).catch((err) => console.log(err));
     }
   };
@@ -51,7 +51,7 @@ export default function Chat() {
   return (
     <div className="chat__page">
       <div className="background">
-        <section className="messages">
+        <section className="messages custom-scroll">
           {messages?.length > 0 &&
             messages.map((m, i) => (
               <div
@@ -60,7 +60,7 @@ export default function Chat() {
                   m.sender === session?.user?.uid ? "right" : "left"
                 } 
                 ${cluster(i) && "cluster"}
-                ${i === messages.length - 1 && "last"}`}
+                ${i === messages.length - 1 && messages.length != 1 && "last"}`}
               >
                 <div className="content">
                   <p>{m.message}</p>

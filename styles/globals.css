@@ -55,7 +55,7 @@ body{
 
 .page__gradient{
   border-bottom-right-radius: 25%;
-  @apply absolute h-80 w-full !-z-10
+  @apply absolute h-60 w-full !-z-10
   bg-gradient-to-r from-sky-400 to-cyan-300
 }
 

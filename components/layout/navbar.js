@@ -119,7 +119,7 @@ function Navbar({ router }) {
 
           <ul
             tabIndex="0"
-            className="dropdown-content menu p-2 shadow bg-white rounded-box w-52"
+            className="dropdown-content menu p-2 shadow bg-white bg-slate-800 rounded-box w-52"
             onClick={signOut}
           >
             <li>
@@ -165,7 +165,7 @@ function Navbar({ router }) {
 
           <ul
             tabIndex="0"
-            className="dropdown-content menu p-2 shadow bg-white rounded-box w-52"
+            className="dropdown-content menu p-2 shadow font-semibold bg-sky-600 rounded-box w-52"
             onClick={signOut}
           >
             <li>

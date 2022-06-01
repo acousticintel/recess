@@ -7,19 +7,6 @@ import Title from "../elements/title";
 import { useData } from "../../context/dataContext";
 import Kid from "./kid";
 
-const mainVar = {
-  hide: {
-    opacity: 1,
-  },
-  show: {
-    opacity: 1,
-    transition: {
-      when: "beforeChildren",
-      staggerChildren: 0.35,
-    },
-  },
-};
-
 const contVar = {
   hide: {
     opacity: 1,
@@ -27,7 +14,7 @@ const contVar = {
   show: {
     opacity: 1,
     transition: {
-      delayChildren: 0.75,
+      delay: 2,
       when: "beforeChildren",
       staggerChildren: 0.25,
     },
@@ -62,7 +49,7 @@ export default function KidsSection() {
         className="kids__list no-scroll"
       >
         {kids.map((k, i) => (
-          <Link href={`child/${i}`} key={i}>
+          <Link href="child/profile" key={i}>
             <Kid data={k}/>
           </Link>
         ))}

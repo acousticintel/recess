@@ -27,8 +27,8 @@ const revealVar = {
 
 const iconVar = {
   normal: {
-    color: "#f3f4f6",
-    backgroundColor: "#22d3ee",
+    color: "#fff",
+    backgroundColor: "#0284c7",
     transition: {
       ease: "easeInOut",
       duration: 0.75,
@@ -36,7 +36,7 @@ const iconVar = {
   },
   show: {
     color: "#fff",
-    backgroundColor: "#38bdf8",
+    backgroundColor: "#0ea5e9",
     transition: {
       ease: "easeInOut",
       duration: 0.75,

@@ -5,6 +5,7 @@ import { useData } from "../../context/dataContext";
 //custom
 import { useSession } from "next-auth/react";
 import { AnimatePresence, motion } from "framer-motion";
+import ContactElement from "../elements/contactElement";
 
 const slideVar = {
   hide: {
@@ -33,51 +34,11 @@ const slideVar = {
 
 export default function ContactsModal() {
   const [panel, setPanel] = useState("prod");
-  //const { teachers } = useData();
+  const { teachers } = useData();
 
-  useEffect(() => {}, []);
-
-  const studentColors = {
-    studentId1: "purple",
-    studentId2: "red",
-  };
-
-  const getColor = (studentId) => {
-    return studentColors[studentId];
-  };
-
-  const teachers = [
-    {
-      name: "Jane Doe",
-      subject: "Class",
-      studentId: "studentId1",
-    },
-    {
-      name: "Jane Doe",
-      subject: "Mathematics",
-      studentId: "studentId1",
-    },
-    {
-      name: "John Doe",
-      subject: "English",
-      studentId: "studentId2",
-    },
-    {
-      name: "Mark Doe",
-      subject: "Swahili",
-      studentId: "studentId2",
-    },
-    {
-      name: "Jane Doe",
-      subject: "Geography",
-      studentId: "studentId1",
-    },
-    {
-      name: "Jane Doe",
-      subject: "History",
-      studentId: "studentId2",
-    },
-  ];
+  useEffect(() => {
+    //console.log(teachers);
+  }, [teachers]);
 
   return (
     <div>
@@ -96,26 +57,10 @@ export default function ContactsModal() {
           <div className="contacts__modal">
             <h1>Click on Contacts to start the Chat</h1>
             <section className="contacts__list custom-scroll">
-              {teachers.map((t, i) => (
-                <div className={`teacher ${getColor(t.studentId)}`} key={i}>
-                  <div className="flex">
-                    <div className="avatar">
-                      <div className={`${getColor(t.studentId)}`}>
-                        <img
-                          src={`https://api.lorem.space/image/face?hash=327${i}`}
-                          alt=""
-                        />
-                      </div>
-                    </div>
-                    <div className="content">
-                      <h2>{t.name}</h2>
-                      <h3>
-                        {t.studentId} s {t.subject} Teacher
-                      </h3>
-                    </div>
-                  </div>
-                </div>
-              ))}
+              {teachers?.length &&
+                teachers.map((t, i) => (
+                  <ContactElement key={i} data={t} />
+                ))}
             </section>
           </div>
         </label>

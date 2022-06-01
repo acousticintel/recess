@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import ContactsModal from "../modals/contactsModal";
 import WorkModal from "../modals/workModal";
 //custom
+const Navbar = dynamic(() => import("./navbar"));
 const Banner = dynamic(() => import("./banner"));
 const BottomNav = dynamic(() => import("./bottomNav"));
 
@@ -21,6 +22,7 @@ export default function Layout({ children, path }) {
       </Head>
       <div className="page__gradient"/>
       <Banner />
+      <Navbar />
       <ContactsModal />
       <WorkModal />
       <AnimatePresence

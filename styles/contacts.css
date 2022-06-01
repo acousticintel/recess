@@ -12,7 +12,7 @@
 
 .contacts__modal >  .contacts__list .teacher{
   @apply flex items-center justify-between w-full py-4 border-b border-dashed 
-  border-gray-200;
+  cursor-pointer border-gray-200;
 }
 
 .contacts__modal >  .contacts__list .teacher.purple{

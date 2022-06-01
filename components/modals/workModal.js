@@ -113,7 +113,7 @@ export default function WorkModal() {
               <button>
                 Done
                 <label className="swap swap-rotate">
-                  <input type="checkbox" checked={false} />
+                  <input type="checkbox" />
                   <FaCheckCircle size="1.5em" className="swap-on" />
                   <FaRegCheckCircle size="1.5em" className="swap-off" />
                 </label>

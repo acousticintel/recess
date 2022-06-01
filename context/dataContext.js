@@ -41,8 +41,8 @@ function useProvideData() {
   //useEffect(() => { }, []);
 
   useEffect(() => {
-    console.log(chats);
-  }, [chats]);
+    //console.log(teachers);
+  }, [teachers]);
 
   useEffect(() => {
     createUser();
@@ -51,8 +51,10 @@ function useProvideData() {
   }, [db, session]);
 
   useEffect(() => {
-    getAllDiaries();
-    getAllTeachers();
+    if (students.length > 0) {
+      getAllDiaries();
+      getAllTeachers();
+    }
   }, [students]);
 
   async function createUser() {
@@ -80,7 +82,8 @@ function useProvideData() {
       return onSnapshot(q, (snapshot) => {
         const tmp = [];
         snapshot.forEach((doc) => {
-          tmp.push(doc.data());
+          let id = doc.id;
+          tmp.push({ ...doc.data(), id });
         });
 
         if (tmp !== students) {
@@ -115,52 +118,65 @@ function useProvideData() {
   }
 
   async function getAllDiaries() {
-    if (students.length > 0) {
-      let promises = [];
-      students.forEach(async (student) => {
-        let p = getDiaries(student.schoolId, student.classId);
-        promises.push(p);
+    let promises = [];
+    students.forEach(async (student) => {
+      let p = getDiaries(student.schoolId, student.classId);
+      promises.push(p);
+    });
+
+    Promise.all(promises).then((results) => {
+      let tmp = [];
+      results.forEach((r) => {
+        tmp.push(...r);
       });
 
-      Promise.all(promises).then((results) => {
-        setDiaries(...results);
-      });
-    }
+      if (tmp !== diaries) {
+        setDiaries(tmp);
+      }
+    });
   }
 
   async function getTeachers(schoolId, classId, studentId) {
-    if (session?.user) {
-      const q = query(
-        collection(db, `school/${schoolId}/${classId}"`),
-        where("schoolId", "==", schoolId),
-        where("classId", "==", classId),
-        orderBy("name", "desc")
-      );
-      return onSnapshot(q, (snapshot) => {
-        const tmp = [];
-        snapshot.forEach((doc) => {
-          tmp.push({ ...doc.data(), studentId });
+    return new Promise((resolve, reject) => {
+      try {
+        const q = query(
+          collection(db, `teachers`),
+          where("schoolId", "==", `${schoolId}`),
+          where("classId", "==", `${classId}`),
+          orderBy("name", "desc")
+        );
+        onSnapshot(q, (snapshot) => {
+          const tmp = [];
+          snapshot.forEach((doc) => {
+            tmp.push({ ...doc.data(), studentId, id: doc.id });
+          });
+          if (tmp.length > 0) {
+            resolve(tmp);
+          }
         });
-        if (tmp !== teachers) {
-          return tmp;
-        }
-      });
-    }
+      } catch (error) {
+        console.warn(error);
+        reject(error);
+      }
+    });
   }
 
   async function getAllTeachers() {
-    if (students.length > 0) {
-      students.forEach(async (student) => {
-        let teach = await getTeachers(
-          student.schoolId,
-          student.classId,
-          student.Id
-        );
-        if (teach !== teachers) {
-          setTeachers(teach);
-        }
+    let promises = [];
+    students.forEach(async (student) => {
+      let p = getTeachers(student.schoolId, student.classId, student.id);
+      promises.push(p);
+    });
+
+    Promise.all(promises).then((results) => {
+      let tmp = [];
+      results.forEach((r) => {
+        tmp.push(...r);
       });
-    }
+      if (tmp !== teachers) {
+        setTeachers(tmp);
+      }
+    });
   }
 
   async function getSchoolWithId(id) {
@@ -170,27 +186,6 @@ function useProvideData() {
     if (docSnap.exists()) {
       return docSnap.data();
     }
-  }
-
-  async function getStudent(schoolId, classId) {
-    return new Promise((resolve, reject) => {
-      function checkStudent(stu) {
-        if (stu.schoolId == schoolId && stu.classId == classId) {
-          return stu;
-        }
-      }
-
-      const result = students.filter(checkStudent);
-      if (result.length === 1) {
-        resolve(result[0]);
-      } else if (result.length > 1) {
-        reject("Student not found");
-      } else if (result.length > 1) {
-        reject("Student more than 1");
-      } else {
-        reject("Unknown");
-      }
-    });
   }
 
   async function getChats() {
@@ -203,11 +198,14 @@ function useProvideData() {
         let tmp = [];
         snapshot.forEach(async (doc) => {
           let chat = doc.data();
-          let part = await getParticipantWithId(chat?.participants[0]);
+          let other = chat?.participants.filter(function (value, index, arr) {
+            return value !== session?.user?.uid;
+          });
+
+          let part = await getParticipantWithId(other[0]);
           tmp.push({ id: doc.id, participant: part, ...chat });
         });
 
-        console.log(tmp);
         if (tmp !== chats) {
           setChats(tmp);
         }
@@ -226,9 +224,30 @@ function useProvideData() {
       snapshot.forEach((doc) => {
         tmp.push(doc.data());
       });
-      
+
       if (tmp !== messages) {
         setMessages(tmp);
+      }
+    });
+  }
+
+  async function createChatRoom(participant) {
+    return new Promise(async (resolve, reject) => {
+      console.log(participant);
+      try {
+        if (session?.user) {
+          const docRef = await addDoc(collection(db, `chatrooms`), {
+            participants: [session?.user?.uid, participant],
+          });
+
+          if (docRef) {
+            resolve(docRef);
+          }
+        } else {
+          reject("Permission denied");
+        }
+      } catch (error) {
+        reject(error);
       }
     });
   }
@@ -262,7 +281,7 @@ function useProvideData() {
     return new Promise(async (resolve, reject) => {
       const docRef = doc(db, "users", `${id}`);
       const docSnap = await getDoc(docRef);
-
+      
       if (docSnap.exists()) {
         resolve(docSnap.data());
       }
@@ -271,12 +290,15 @@ function useProvideData() {
 
   return {
     students,
+    teachers,
     diaries,
     chats,
     messages,
-    getStudent,
+
     getMessages,
     sendMessage,
+    createChatRoom,
+
     getSchoolWithId,
     getParticipantWithId,
   };

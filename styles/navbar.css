@@ -29,7 +29,7 @@ nav .logo{
 
 .bottom__nav__cont{
   @apply  fixed md:hidden block inset-x-5 bottom-5 z-10 
-  bg-gradient-to-r from-sky-400 to-cyan-300 shadow rounded-full
+  bg-sky-600 shadow rounded-full
 }
 
 .bottom__nav__cont > .bottom__nav{
@@ -41,7 +41,7 @@ nav .logo{
 }
 
 .bottom__nav  a .icon__cont__out{
-  @apply bg-cyan-400 flex justify-center items-center
+  @apply bg-sky-600 flex justify-center items-center
   h-12 w-12 rounded-full;
 }
 
@@ -51,5 +51,5 @@ nav .logo{
 }
 
 .bottom__nav a > span{
-  @apply text-xs capitalize;
+  @apply text-xs font-medium capitalize;
 }

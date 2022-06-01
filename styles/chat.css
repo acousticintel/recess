@@ -11,7 +11,7 @@
 }
 
 .chats__page > .chats__sec .chats__list .chat{
-  @apply flex py-3 items-center rounded-3xl border-b border-dashed 
+  @apply flex items-center rounded-3xl border-b border-dashed cursor-pointer
   bg-neutral px-4 py-3 mb-1 bg-white;
 }
 
@@ -33,12 +33,15 @@
 }
 
 .chat__page > .background{
-  @apply w-full h-full rounded-3xl p-4 bg-white flex flex-col;
+  @apply w-full h-full rounded-2xl p-2 bg-white flex flex-col overflow-hidden;
 }
 
 .chat__page > .background > .messages{
-  @apply flex grow flex-col justify-end mx-6 bg-white 
-  rounded-3xl p-4 overflow-y-auto;
+  @apply  h-[400px] mb-2 px-2 overflow-y-scroll;
+}
+
+.chat__page > .background > .messages .message{
+  @apply font-medium my-0.5;
 }
 
 .chat__page > .background > .messages .message.right{
@@ -68,11 +71,11 @@
 }
 
 .chat__page > .background > .messages .message.left.cluster p{
-  @apply rounded-tr-none;
+  @apply rounded-tl-none;
 }
 
 .chat__page > .background > .messages .message.left.last p{
-  @apply rounded-tr-none rounded-br-full;
+  @apply rounded-tl-none rounded-bl-full;
 }
 
 .chat__page > .background > .messages .message span{

@@ -2,8 +2,12 @@
   @apply px-6;
 }
 
+.calendar__page > h1{
+  @apply text-3xl font-medium text-white mb-5;
+}
+
 .calendar__page .calendar{
-  @apply bg-white rounded-3xl p-4;
+  @apply bg-white rounded-3xl p-4 pb-8;
 }
 
 .calendar__page .calendar h4{
@@ -22,10 +26,14 @@
   @apply bg-cyan-100 rounded-2xl;
 }
 
+.calendar__page .calendar .dates h5{
+  @apply font-semibold;
+}
+
 .calendar__page .calendar span{
-  @apply font-medium text-gray-400;
+  @apply font-medium text-gray-400 capitalize text-xs;
 }
 
 .calendar__page .calendar h5{
-  @apply font-semibold;
+  @apply font-semibold text-xl;
 }

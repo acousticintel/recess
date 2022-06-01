@@ -23,7 +23,7 @@ export default function ChatElement({ data }) {
   }, [data]);
 
   const handleClick = () => {
-    router.push(`chats/chat?id=${data.id}`)
+    router.push(`chats/chat?id=${data.id}`);
   };
 
   return (

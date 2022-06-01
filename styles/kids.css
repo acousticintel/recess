@@ -8,7 +8,7 @@
 }
 
 .kids__sec > .kids__list .child{
-  @apply rounded-3xl bg-white text-center snap-center
+  @apply rounded-3xl bg-white text-center snap-center cursor-pointer
   shadow-lg leading-tight min-w-[200px];
 }
 
