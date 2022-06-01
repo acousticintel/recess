@@ -10,7 +10,7 @@ export default function ContactElement({ data }) {
 
   useEffect(() => {
     if (students?.length > 0) {
-      students.map((s, i) => {
+      students.forEach(s => {
         if (s.id === data.studentId) {
           setStudent(s);
         }

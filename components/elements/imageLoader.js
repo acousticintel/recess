@@ -10,7 +10,7 @@ export default function ImageLoader({src, alt, width, height}) {
   
   return (
     <div className={`image__loader ${loaded && "loaded"}`}>
-      <div className="overlay" />
+      <div className="overlay relative" />
       {!width && !height && (
         <Image
           src={src}

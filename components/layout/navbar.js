@@ -1,10 +1,13 @@
-import Link from "next/link";
 import Image from "next/image";
 import dynamic from "next/dynamic";
 import { withRouter } from "next/router";
+import { useEffect, useState } from "react";
+
 import { motion } from "framer-motion";
 import { signOut, useSession } from "next-auth/react";
+
 import ImageLoader from "../elements/imageLoader";
+import { useData } from "../../context/dataContext";
 //custom
 const BiLeftArrow = dynamic(
   async () => (await import("react-icons/bi")).BiLeftArrow
@@ -47,6 +50,7 @@ const childVar = {
 
 function Navbar({ router }) {
   const { data: session, status } = useSession();
+  const { teachers } = useData();
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -90,13 +94,13 @@ function Navbar({ router }) {
           <BiLeftArrow size="1.5em" />
         </motion.button>
         <motion.div variants={childVar} className="flex items-center">
-          <div className="avatar mr-5">
+          <div className="avatar mr-5 relative">
             <div className="w-16 rounded-full">
-              <img src="https://api.lorem.space/image/face?hash=92310" alt=""/>
+              <img src="https://api.lorem.space/image/face?hash=92310" alt="" />
             </div>
           </div>
           <div>
-            <h1 className="text-sm font-medium">Jane Doe</h1>
+            <h1 className="text-sm font-medium">teacher</h1>
             <h2 className="text-xs text-gray-400">Child1</h2>
             <h2 className="text-xs text-gray-400">Riara Mathematics Teacher</h2>
           </div>
@@ -104,8 +108,10 @@ function Navbar({ router }) {
         <motion.div variants={childVar} className="dropdown dropdown-end">
           <label tabIndex="0" className="btn btn-circle btn-ghost">
             {session?.user ? (
-              <div className="relative h-7 w-7 rounded-full overflow-hidden">
-                <ImageLoader src={session.user.image} alt="pp" />
+              <div className="avatar relative">
+                <div className="w-9 rounded-full">
+                  <img src={session.user.image} alt="" />
+                </div>
               </div>
             ) : (
               <button
@@ -119,7 +125,7 @@ function Navbar({ router }) {
 
           <ul
             tabIndex="0"
-            className="dropdown-content menu p-2 shadow bg-white bg-slate-800 rounded-box w-52"
+            className="dropdown-content menu p-2 shadow bg-white font-semibold bg-sky-600 rounded-box w-52"
             onClick={signOut}
           >
             <li>
@@ -150,8 +156,10 @@ function Navbar({ router }) {
         <motion.div variants={childVar} className="dropdown dropdown-end">
           <label tabIndex="0" className="btn btn-circle btn-ghost">
             {session?.user ? (
-              <div className="relative h-7 w-7 rounded-full overflow-hidden">
-                <ImageLoader src={session.user.image} alt="pp" />
+              <div className="avatar relative">
+                <div className="w-9 rounded-full">
+                  <img src={session.user.image} alt="" />
+                </div>
               </div>
             ) : (
               <button

@@ -37,7 +37,7 @@
 }
 
 .chat__page > .background > .messages{
-  @apply  h-[400px] mb-2 px-2 overflow-y-scroll;
+  @apply  h-full flex flex-col justify-end mb-2 px-2 overflow-y-scroll;
 }
 
 .chat__page > .background > .messages .message{
